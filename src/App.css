@@ -1,0 +1,78 @@
+#root {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+
+ .dot-typing {
+        position: relative;
+        left: -9999px;
+        width: 8px;
+        height: 8px;
+        border-radius: 5px;
+        background-color: #2b7fff;
+        color: #2b7fff;
+        box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        animation: dot-typing 1.5s infinite linear;
+    }
+    
+    @keyframes dot-typing {
+        0% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+        16.667% {
+            box-shadow: 9984px -10px 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+        33.333% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+        50% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px -10px 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+        66.667% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+        83.333% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px -10px 0 0 #2b7fff;
+        }
+        100% {
+            box-shadow: 9984px 0 0 0 #2b7fff, 9999px 0 0 0 #2b7fff, 10014px 0 0 0 #2b7fff;
+        }
+      }
