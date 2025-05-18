@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { faker } from '@faker-js/faker';
+import { getRandomDelay } from '../../lib/utils';
 
-const getRandomDelay = () => Math.floor(Math.random() * 2000) + 1000;
 
 const ChatView = () => {
     const [messages, setMessages] = useState(() => {
