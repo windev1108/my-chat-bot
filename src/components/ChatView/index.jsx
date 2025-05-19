@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { faker } from '@faker-js/faker';
-import { getRandomDelay } from '../../lib/utils';
+import { getPredefinedAnswer, getRandomDelay } from '../../lib/utils';
 
 
 const ChatView = () => {
@@ -24,16 +24,33 @@ const ChatView = () => {
         setMessages((prev) => [...prev, userMsg]);
         setIsThinking(true);
         setInput('')
-
+        const predefined = getPredefinedAnswer(content);
         setTimeout(() => {
-            const botResponse = {
-                sender: 'bot',
-                content: faker.hacker.phrase(),
-                type: 'text',
-            };
-            setMessages((prev) => [...prev, botResponse]);
+            if (predefined) {
+                const { text, image } = predefined;
+                setMessages(prev => [
+                    ...prev,
+                    {
+                        sender: "bot",
+                        content: text,
+                        image: image || null,
+                        type: 'text'
+                    },
+                ]);
+
+            } else {
+                setMessages(prev => [
+                    ...prev,
+                    {
+                        sender: "bot",
+                        content: faker.hacker.phrase(),
+                        type: 'text'
+                    },
+                ]);
+            }
+
             setIsThinking(false);
-        }, getRandomDelay());
+        }, getRandomDelay())
     };
 
     const handleImageUpload = (e) => {
@@ -64,13 +81,20 @@ const ChatView = () => {
                             ) : (
                                 <img src={msg.content} alt="uploaded" className="max-w-[200px] rounded" />
                             )}
+                            {msg.image && (
+                                <img
+                                    src={msg.image}
+                                    alt="bot reply"
+                                    className="mt-1 max-w-xs rounded-lg shadow"
+                                />
+                            )}
                         </div>
                     </div>
                 ))}
                 {isThinking && (
                     <div className="flex justify-start">
                         <div className="!ml-2 px-4 flex items-center gap-3 rounded-lg bg-gray-100" data-title="dot-typing">
-                           <span>Bot đang thinking</span>
+                            <span>Bot đang thinking</span>
                             <div className="flex items-center justify-center px-3 py-3 stage">
                                 <div className="dot-typing"></div>
                             </div>
@@ -104,7 +128,7 @@ const ChatView = () => {
                 <input
                     ref={fileInputRef}
                     type="file"
-                    accept="image/*"    
+                    accept="image/*"
                     hidden
                     onChange={handleImageUpload}
                 />
